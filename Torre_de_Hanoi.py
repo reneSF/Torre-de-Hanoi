@@ -17,10 +17,6 @@ class TorreDeHanoi:
             x = 150 + i * 200
             self.canvas.create_line(x, 150, x, 300, width=5)
 
-    def create_discs(self):
-        for i in range(3):
-            x = 150 + i * 200
-            self.canvas.create_line(x, 150, x, 300, width=5)
 
     def create_discs(self):
         # Crear los discos y ubicarlos en la primera vara
@@ -50,8 +46,12 @@ class TorreDeHanoi:
         # Obtener las coordenadas actuales del disco
         x0, y0, x1, y1 = self.canvas.coords(disc)
         dx = (x_to - (x0 + x1) / 2) / 20
-        dy_up = -5
-        dy_down = (y_to - y1) / 20
+    def animate_move(self, disc, x_from, x_to, y_to):
+        # Obtener las coordenadas actuales del disco
+        x0, y0, x1, y1 = self.canvas.coords(disc)
+        dx = (x_to - (x0 + x1) / 2) / 20
+        dy_up = (150 - y0) / 20
+        dy_down = (y_to - 150) / 20
 
         # Subir el disco
         for _ in range(20):
